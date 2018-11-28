@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Usuario
@@ -50,12 +51,28 @@ class Usuario
     private $password;
 
     /**
+     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuarioSolicitante")
+     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuarioAsignado")
+     */
+    private $solicitudes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CamposAfines", mappedBy="usuario")
+     */
+    private $CamposAfines;
+
+    public function __construct()
+    {
+        $this->solicitudes = new ArrayCollection();
+        $this->CamposAfines = new ArrayCollection();
+    }
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="habilitado", type="boolean")
      */
     private $habilitado;
-
 
     /**
      * Get id
