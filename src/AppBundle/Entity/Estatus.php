@@ -37,7 +37,7 @@ class Estatus
     /**
      * @ORM\OneToMany(targetEntity="SolicitudNotas", mappedBy="estatus")
      */
-    private $SolicitudesNotas;
+    private $SolicitudesEstatus;
 
 
     /**
@@ -48,7 +48,7 @@ class Estatus
     public function __construct()
     {
         $this->solicitudes = new ArrayCollection();
-        $this->SolicitudesNotas = new ArrayCollection();
+        $this->SolicitudesEstatus = new ArrayCollection();
         $this->SolicitudEstatus = new ArrayCollection();
     }
 

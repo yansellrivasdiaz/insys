@@ -20,6 +20,7 @@ security:
 
         main:
             anonymous: ~
+            provider: db
             form_login:
               login_path: login
               check_path: login
@@ -28,10 +29,11 @@ security:
               path: /logout
               target: /login
 
-#    access_control:
-#    - { path: ^/registrarse, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#    - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+    access_control:
+    - { path: ^/registrarse, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/home, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

@@ -18,14 +18,14 @@
         <header>
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-                <a class="navbar-brand" href="/app_dev.php">Insys</a>
+                <a class="navbar-brand" href="{{ path('indexpage') }}">Insys</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/app_dev.php"><i class="fas fa-home fa-lg"></i> INICIO <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ path('indexpage') }}"><i class="fas fa-home fa-lg"></i> INICIO <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fa fa-newspaper fa-lg"></i> Noticias</a>
@@ -33,7 +33,7 @@
                     </ul>
                     <ul class="navbar-nav float-lg-right float-md-right">
                         <li class="nav-item">
-                            <a href="/app_dev.php/login" class="nav-link"><i class="fa fa-sign-in-alt fa-lg"></i> LOGIN</a>
+                            <a href="{{ path('login') }}" class="nav-link"><i class="fa fa-sign-in-alt fa-lg"></i> LOGIN</a>
                         </li>
                     </ul>
                 </div>

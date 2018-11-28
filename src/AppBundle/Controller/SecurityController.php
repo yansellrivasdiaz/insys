@@ -19,6 +19,7 @@ class SecurityController extends AbstractController
      */
     public function registrarseAction(Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
+        if($this->getUser() != null) return $this->redirectToRoute('homepage');
         // 1) build the form
         $usuario = new Usuario();
         $form = $this->createForm(UsuarioType::class, $usuario);
@@ -37,15 +38,7 @@ class SecurityController extends AbstractController
             $entityManager->persist($usuario);
             $entityManager->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
-
-            //return $this->redirectToRoute('replace_with_some_route');
-            //return new Response("Usuario registrado");
-            // replace this example code with whatever you need
-            return $this->render('@App/Security/login.html.twig', array(
-                'message' => "Usuario registrado"
-            ));
+            return $this->redirectToRoute('login');
         }
 
         return $this->render(
@@ -61,6 +54,7 @@ class SecurityController extends AbstractController
  */
     public function loginAction(AuthenticationUtils $authenticationUtils)
     {
+        if($this->getUser() != null) return $this->redirectToRoute('homepage');
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
