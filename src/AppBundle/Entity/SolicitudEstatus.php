@@ -30,7 +30,7 @@ class SolicitudEstatus
 
     /**
      * @var Solicitud
-     * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="solicitudes")
+     * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="EstatusSolicitudes")
      * @ORM\JoinColumn(name="solicitud", referencedColumnName="id")
      */
     private $solicitud;

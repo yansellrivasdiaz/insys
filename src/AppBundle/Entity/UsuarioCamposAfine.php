@@ -23,14 +23,14 @@ class UsuarioCamposAfine
 
     /**
      * @var CamposAfines
-     * @ORM\ManyToOne(targetEntity="CamposAfines", inversedBy="CamposAfines")
+     * @ORM\ManyToOne(targetEntity="CamposAfines", inversedBy="CamposAfinesUsuarios")
      * @ORM\JoinColumn(name="campo_afine", referencedColumnName="id")
      */
     private $CampoAfine;
 
     /**
      * @var Usuario
-     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="CamposAfines")
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="UsuariosCamposAfines")
      * @ORM\JoinColumn(name="usuario", referencedColumnName="id")
      */
     private $usuario;

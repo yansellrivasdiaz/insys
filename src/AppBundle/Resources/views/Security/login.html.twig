@@ -1,0 +1,38 @@
+{# app/Resources/views/Security/login.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }}| LOGIN{% endblock %}
+{% block body %}
+    <div class="row mt-2">
+        <div class="col-xs-12 col-sm-10 offset-md-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <div class="card">
+                <div class="card-header text-center text-white bg-primary"><div class="h5"><i class="fa fa-user-lock fa-lg"></i> Login</div></div>
+                {% if error %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>
+                            {{ error.messageKey|trans(error.messageData,'security') }}
+                        </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <form id="form-login" action="{{ path('login') }}" method="post" class="card-body">
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" class="form-control form-control-sm" id="username" value="{{ last_username }}" name="_username" aria-describedby="usernameHelp" placeholder="Escriba el usuario" required>
+                    </div>
+                    <div class="form-group text-truncate">
+                        <label for="password" class="w-100">Contraseña <a href="#" class="float-right">¿Olvidaste tu contraseña?</a></label>
+                        <input type="password" class="form-control form-control-sm" name="_password" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberme">
+                        <label class="form-check-label" for="rememberme">Recordarme ?</label>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-block btn-primary"><i class="fa fa-sign-in-alt fa-lg"></i> Entrar</button>
+                    <a href="/app_dev.php/registrarse" class="btn btn-sm btn-block btn-link" style="font-weight: bold;">Registrate!</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -31,9 +31,9 @@
                             <a class="nav-link" href="#"><i class="fa fa-newspaper fa-lg"></i> Noticias</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav float-right">
+                    <ul class="navbar-nav float-lg-right float-md-right">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="fa fa-sign-in-alt fa-lg"></i> LOGIN</a>
+                            <a href="/app_dev.php/login" class="nav-link"><i class="fa fa-sign-in-alt fa-lg"></i> LOGIN</a>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
         </header>
 
         <!-- Begin page content -->
-        <main role="main" class="container-fluid mt-5 pt-3">
+        <main role="main" class="container-fluid mt-5 pt-2">
             {% block body %}
 
             {% endblock %}

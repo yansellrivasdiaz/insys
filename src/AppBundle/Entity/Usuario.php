@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Usuario
@@ -11,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="usuario")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  */
-class Usuario
+class Usuario implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -52,19 +53,24 @@ class Usuario
 
     /**
      * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuarioSolicitante")
-     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuarioAsignado")
      */
-    private $solicitudes;
+    private $UsuarioSolicitanteSolicitudes;
 
     /**
-     * @ORM\OneToMany(targetEntity="CamposAfines", mappedBy="usuario")
+     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuarioAsignado")
      */
-    private $CamposAfines;
+    private $UsuarioAsignadoSolicitudes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UsuarioCamposAfine", mappedBy="usuario")
+     */
+    private $UsuariosCamposAfines;
 
     public function __construct()
     {
-        $this->solicitudes = new ArrayCollection();
-        $this->CamposAfines = new ArrayCollection();
+        $this->UsuarioAsignadoSolicitudes = new ArrayCollection();
+        $this->UsuarioSolicitanteSolicitudes = new ArrayCollection();
+        $this->UsuariosCamposAfines = new ArrayCollection();
     }
 
     /**
@@ -74,6 +80,23 @@ class Usuario
      */
     private $habilitado;
 
+    private $plainPassword;
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
     /**
      * Get id
      *
@@ -202,6 +225,92 @@ class Usuario
     public function getHabilitado()
     {
         return $this->habilitado;
+    }
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return array('ROLE_USER');
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     */
+    public function getRoles()
+    {
+        return array ('ROLE_USER');
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * String representation of object
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     * @since 5.1.0
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->nombre,
+            $this->email
+        ]);
+    }
+
+    /**
+     * Constructs the object
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     * @since 5.1.0
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->nombre,
+            $this->email
+            ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 }
 

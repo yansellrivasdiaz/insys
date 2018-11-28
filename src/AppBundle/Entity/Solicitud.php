@@ -44,21 +44,21 @@ class Solicitud
 
     /**
      * @var Usuario
-     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="solicitudes")
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="UsuarioAsignadoSolicitudes")
      * @ORM\JoinColumn(name="usuario_asignado", referencedColumnName="id")
      */
     private $usuarioAsignado;
 
     /**
      * @var Usuario
-     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="solicitudes")
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="UsuarioSolicitanteSolicitudes")
      * @ORM\JoinColumn(name="usuario_solicitante", referencedColumnName="id")
      */
     private $usuarioSolicitante;
 
     /**
      * @var CamposAfines
-     * @ORM\ManyToOne(targetEntity="CamposAfines", inversedBy="CamposAfines")
+     * @ORM\ManyToOne(targetEntity="CamposAfines", inversedBy="SolicitudCamposAfines")
      * @ORM\JoinColumn(name="campo_afine", referencedColumnName="id")
      */
     private $CampoAfine;
@@ -72,13 +72,19 @@ class Solicitud
     private $estatus;
 
     /**
-     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="solicitud")
+     * @ORM\OneToMany(targetEntity="SolicitudNotas", mappedBy="solicitud")
      */
-    private $solicitudes;
+    private $SolicitudesNotas;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SolicitudEstatus", mappedBy="solicitud")
+     */
+    private $EstatusSolicitudes;
 
     public function __construct()
     {
-        $this->solicitudes = new ArrayCollection();
+        $this->SolicitudesNotas = new ArrayCollection();
+        $this->EstatusSolicitudes = new ArrayCollection();
     }
 
     /**

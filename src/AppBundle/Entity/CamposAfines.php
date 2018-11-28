@@ -30,9 +30,20 @@ class CamposAfines
     private $descripcion;
 
     /**
-     * @ORM\OneToMany(targetEntity="CamposAfines", mappedBy="CampoAfine")
+     * @ORM\OneToMany(targetEntity="UsuarioCamposAfine", mappedBy="CampoAfine")
      */
-    private $CamposAfines;
+    private $CamposAfinesUsuarios;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="CampoAfine")
+     */
+    private $SolicitudCamposAfines;
+
+    public function __construct()
+    {
+        $this->SolicitudCamposAfines = new ArrayCollection();
+        $this->CamposAfinesUsuarios = new ArrayCollection();
+    }
 
     /**
      * Get id
