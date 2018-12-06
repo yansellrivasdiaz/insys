@@ -18,7 +18,7 @@
         <header>
             <!-- Fixed navbar -->
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-                <a class="navbar-brand" href="{{ path('homepage') }}">BLOG</a>
+                <a class="navbar-brand" href="{{ path('homepage') }}">INSYS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuhome" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,6 +26,16 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ path('homepage') }}"><i class="fa fa-home fa-lg"></i> INICIO <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item nav-item-right dropdown active">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cogs fa-lg"></i> Administrar
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="camposafinesinfo">
+                                <a class="dropdown-item" href="{{ path('camposafinespage') }}"><i class="fas fa-th"></i> Campos Afines</a>
+                                <a class="dropdown-item" href="{{ path('usuariospage') }}"><i class="fas fa-users-cog"></i> Usuarios</a>
+                                <a class="dropdown-item" href="{{ path('estatuspage') }}"><i class="fas fa-question-circle"></i> Estatus</a>
+                            </div>
                         </li>
                     </ul>
                     <ul class="navbar-nav  float-lg-right float-md-right">
