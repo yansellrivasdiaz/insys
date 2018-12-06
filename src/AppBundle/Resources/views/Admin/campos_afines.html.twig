@@ -29,8 +29,8 @@
                                 <td width="20%">{{ campoafin.id }}</td>
                                 <td width="60%">{{ campoafin.descripcion }}</td>
                                 <td width="20%">
-                                    <a href="#" class="btn btn-link btn-sm btn-primary"><i class="fa fa-edit fa-lg"></i></a>
-                                    <a href="#" class="btn btn-link btn-sm btn-danger"><i class="fa fa-times fa-lg"></i></a>
+                                    <a href="{{ path('campo_afin_edit', { id:campoafin.id }) }}" class="btn btn-link btn-sm btn-primary"><i class="fa fa-edit fa-lg"></i></a>
+                                    <a href="{{ path('campo_afin_remove', { id:campoafin.id }) }}" class="btn btn-link btn-sm btn-danger"><i class="fa fa-times fa-lg"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}

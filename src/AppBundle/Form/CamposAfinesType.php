@@ -24,13 +24,14 @@ class CamposAfinesType extends AbstractType
                     'placeholder'=> 'Descripción...')))
             ->add('Guardar',SubmitType::class,array('attr'  => array('class' => 'btn btn-primary btn-sm float-right')))
             ->add('Limpiar',ResetType::class,array('attr'  => array('class' => 'btn btn-warning btn-sm float-right')));
-    }/**
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\CamposAfines'
+            'data_class' => 'AppBundle\Entity\CamposAfines','csrf_protection'=>false
         ));
     }
 

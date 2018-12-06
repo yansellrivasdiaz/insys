@@ -27,6 +27,9 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ path('homepage') }}"><i class="fa fa-home fa-lg"></i> INICIO <span class="sr-only">(current)</span></a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('miscamposafinespage') }}"><i class="fa fa-th fa-lg"></i> Mis Campos Afines<span class="sr-only">(current)</span></a>
+                        </li>
                         <li class="nav-item nav-item-right dropdown active">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-cogs fa-lg"></i> Administrar
@@ -73,6 +76,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="{{ asset('assets/js/jquery.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+        <script src="{{ asset('assets/js/function.js') }}"></script>
 
         {% endblock %}
     </body>

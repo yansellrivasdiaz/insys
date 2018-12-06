@@ -29,8 +29,8 @@
                                     <td width="20%">{{ estatu.id }}</td>
                                     <td width="60%">{{ estatu.descripcion }}</td>
                                     <td width="20%">
-                                        <a href="#" class="btn btn-link btn-sm btn-primary"><i class="fa fa-edit fa-lg"></i></a>
-                                        <a href="#" class="btn btn-link btn-sm btn-danger"><i class="fa fa-times fa-lg"></i></a>
+                                        <a href="{{ path('estatus_edit',{id:estatu.id}) }}" class="btn btn-link btn-sm btn-primary"><i class="fa fa-edit fa-lg"></i></a>
+                                        <a href="{{ path('estatus_remove',{id:estatu.id}) }}" class="btn btn-link btn-sm btn-danger"><i class="fa fa-times fa-lg"></i></a>
                                     </td>
                                 </tr>
                             {% endfor %}
