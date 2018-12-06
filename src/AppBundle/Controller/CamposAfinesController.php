@@ -35,6 +35,7 @@ class CamposAfinesController extends AbstractController
     {
         $data = $request->getContent();
         $data = json_decode($data,true);
+        return new JsonResponse(array("error"=>true,"message"=>"Data incompleta"),400);
         dump($data);
         die;
         $campoafin = new CamposAfines();

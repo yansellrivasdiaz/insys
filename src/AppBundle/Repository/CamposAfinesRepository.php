@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class CamposAfinesRepository extends \Doctrine\ORM\EntityRepository
 {
+    // hacer un procedimiento que accepte un arreglo de id y devuelva un arreglo de objectos
 }

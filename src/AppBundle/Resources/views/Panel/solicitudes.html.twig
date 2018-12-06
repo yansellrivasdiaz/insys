@@ -1,0 +1,71 @@
+{# app/Resources/views/Security/login.html.twig #}
+{% extends 'base.home.html.twig' %}
+{% block title %}{{ parent() }}| SOLICITUDES{% endblock %}
+{% block username %}
+    {{ app.user.nombre }} {{ app.user.apellido }}
+{% endblock %}
+{% block body %}
+    <div class="row mt-2">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card" style="min-height: 80vh;">
+                <div class="card-header bg-primary text-white">
+                    <a href="{{ path('formsolicitudpage') }}" class="btn btn-sm float-right text-primary" title="Crear Solictud" style="background-color: whitesmoke;"><i class="fas fa-plus"></i></a>
+                    <div class="card-title h5"><i class="fas fa-clipboard-list"></i> Solicitudes</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-toolbar mb-3 float-right" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group btn-group-md mr-2" role="group" aria-label="First group">
+                                    <a href="#" type="button" class="btn btn-outline-info">Todas</a>
+                                    <a href="#" type="button" class="btn btn-outline-success">Mis solicitudes</a>
+                                    <a href="#" type="button" class="btn btn-outline-dark">Mis asignaciones</a>
+                                    <a href="#" type="button" class="btn btn-outline-secondary">Disponibles</a>
+                                    <a href="#" type="button" class="btn btn-outline-danger">Canceladas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="max-height: 300px;">
+                        <table class="table table-hover table-striped table-sm" id="table-solicitudes">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Titulo</th>
+                                    <th>Descripción</th>
+                                    <th>Fecha</th>
+                                    <th>Campo Afin</th>
+                                    <th>Solicitante</th>
+                                    <th>Asignado</th>
+                                    <th>Estado</th>
+                                    <th>Controles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Arreglar mi Laptop</td>
+                                    <td>Mi laptop hay que instalarle el windows</td>
+                                    <td>11/12/2018</td>
+                                    <td>Técnico en Informática</td>
+                                    <td>Yansell Rivas Diaz</td>
+                                    <td>N/O</td>
+                                    <td>Disponible</td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-link btn-sm"><i class="fas fa-cog"></i></a>
+                                        <a href="#" class="btn btn-link btn-sm text-danger"><i class="fas fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/app/misCamposAfines.js') }}"></script>
+{% endblock %}

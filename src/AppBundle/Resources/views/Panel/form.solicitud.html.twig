@@ -1,0 +1,49 @@
+{# app/Resources/views/Security/login.html.twig #}
+{% extends 'base.home.html.twig' %}
+{% block title %}{{ parent() }}| CREAR SOLICITUD{% endblock %}
+{% block username %}
+    {{ app.user.nombre }} {{ app.user.apellido }}
+{% endblock %}
+{% block body %}
+    <div class="row mt-2">
+        <div class="col-xs-12 col-sm-10 offset-md-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+            <form action="" method="post" class="card needs-validation" id="formmiscamposafines">
+                <div class="card-header bg-primary text-white py-2">
+                    <a href="{{ path('solicitudpage') }}" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                    <div class="card-title h5"><i class="fas fa-clipboard-check"></i> Crear solicitid</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="titulo">Titulo</label>
+                        <input type="hidden" id="solicitudId"/>
+                        <input type="text" id="titulo" placeholder="Titulo" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control form-control-sm" id="descripcion" rows="2" placeholder="Descripcion..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <select class="custom-select custom-select-sm" id="camposafines" required>
+                            <option selected disabled>Seleccione una opcion...</option>
+                            {% for campoafin in camposafines %}
+                                <option value="{{ campoafin.id }}">{{ campoafin.descripcion }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="reset" class="btn btn-warning btn-sm text-white"><i class="fas fa-eraser"></i> Limpiar</button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/app/misCamposAfines.js') }}"></script>
+{% endblock %}
