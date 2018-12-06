@@ -18,9 +18,9 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/camposafines", name="camposafinespage")
+     * @Route("/camposafines/nuevo", name="nuevocamposafinespage")
      */
-    public function camposAfinesAction(Request $request)
+    public function nuevoCamposAfinesAction(Request $request)
     {
         // 1) build the form
         $camposafines = new CamposAfines();
@@ -35,17 +35,26 @@ class AdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($camposafines);
             $entityManager->flush();
-            return $this->render('@App/Admin/campos_afines.html.twig',array(
-                'form' => $form->createView(),
-                "message"=>"Registro completado exitosamente!",
-                "estatus"=>true
-            ));
+            return $this->redirectToRoute('camposafinespage');
         }
 
         return $this->render(
-            '@App/Admin/campos_afines.html.twig',
+            '@App/Admin/formcampos_afines.html.twig',
             array('form' => $form->createView())
         );
+    }
+
+    /**
+     * @Route("/camposafines", name="camposafinespage")
+     */
+    public function camposafinesAction(Request $request)
+    {
+        $camposafines=$this->getDoctrine()->
+        getRepository(CamposAfines::class)
+            ->findAll();
+        return $this->render('@App/Admin/campos_afines.html.twig',[
+            'campos_afines' => $camposafines
+        ]);
     }
 
 
@@ -57,8 +66,6 @@ class AdminController extends AbstractController
         $estatus=$this->getDoctrine()->
         getRepository(Estatus::class)
             ->findAll();
-//        dump([$estatus]);
-//        exit();
         return $this->render('@App/Admin/estatus.html.twig',[
             'estatus' => $estatus
         ]);
@@ -82,10 +89,7 @@ class AdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($estatus);
             $entityManager->flush();
-            return $this->render('@App/Admin/estatus.html.twig',array(
-                "message"=>"Registro completado exitosamente!",
-                "estatus"=>true
-            ));
+            return $this->redirectToRoute('camposafinespage');
         }
 
         return $this->render(
